@@ -9,14 +9,15 @@ def main():
     #Steph Curry shot data
     shotChartUrl = 'http://stats.nba.com/stats/shotchartdetail?Period=0&VsConference=&LeagueID=00&LastNGames=0&TeamID=0&Position=&Location=&Outcome=&ContextMeasure=FGA&DateFrom=&StartPeriod=&DateTo=&OpponentTeamID=0&ContextFilter=&RangeType=&Season=2015-16&AheadBehind=&PlayerID=201939&EndRange=&VsDivision=&PointDiff=&RookieYear=&GameSegment=&Month=0&ClutchTime=&StartRange=&EndPeriod=&SeasonType=Regular+Season&SeasonSegment=&GameID='
     data = getData(shotChartUrl)
+    print(data)
     headers = data['resultSets'][0]['headers']
     shots = data['resultSets'][0]['rowSet']
 
 
     #Create a dataframe
-    shotDataframe = pd.DataFrame(shots, columns=headers)
-    #scatterShots(shotDataframe)
-    heatMap(shotDataframe)
+    df = pd.DataFrame(shots, columns=headers)
+    #scatterShots(df)
+    heatMap(df)
 
 def getData(url):
     response = requests.get(url)
